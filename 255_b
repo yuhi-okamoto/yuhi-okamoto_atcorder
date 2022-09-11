@@ -1,0 +1,25 @@
+const Main = input =>{
+    let args = input.split("\n");
+    let NK = args[0].split(" ").map(Number);
+    let A = args[1].split(" ").map(Number);
+  
+    let xy = [];
+    for(i=2;i<args.length;i++){
+      xy.push(args[i].split(" ").map(Number));
+    }
+
+  	let ans = 0;
+    let b_array = [];
+    for(j=0;j<Number(NK[0]);j++){
+        let b = 10**15;
+        for(k=0;k<NK[1];k++){
+            let num = A[k]-1;
+            let sqr = Math.sqrt((xy[j][0]-xy[num][0])**2+(xy[j][1]-xy[num][1])**2);
+            b =Math.min(b,sqr);
+        }
+        b_array.push(b);
+    }
+    console.log(Math.max(...b_array));
+}
+
+Main(require("fs").readFileSync("/dev/stdin", "utf8"));
