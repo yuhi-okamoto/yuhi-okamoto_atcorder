@@ -1,0 +1,26 @@
+function Main(input) {
+    const args = input.split('\n');
+    const nums = args[0].split(' ');
+    const h = parseInt(nums[0], 10);
+    const w = parseInt(nums[1], 10);
+
+    let arrayH = [];
+    let arrayW = [];
+    for (i = 0; i < h; i++) {
+        let column = args[i + 1];
+        for (j = 0; j < w; j++) {
+            if (column[j] === "o") {
+                arrayH.push(i);
+                arrayW.push(j);
+            }
+        }
+    }
+
+    let judge = Math.abs(arrayH[0] - arrayH[1]) + Math.abs(arrayW[0] - arrayW[1]);
+    console.log(judge);
+
+
+}
+
+Main(require("fs").readFileSync("/dev/stdin", "utf8"));
+
