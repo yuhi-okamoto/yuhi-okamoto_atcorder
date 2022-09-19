@@ -1,0 +1,61 @@
+function Main(input) {
+ let array_1 = input.split(" ");
+ let N = array_1[0];
+ let A = array_1[1];
+ let B = array_1[2];
+
+ let S1 = [];
+ for(i=0;i<A;i++){
+     S1[i] = ".";
+ }
+
+ let S2 = [];
+ for(j=0;j<A;j++){
+     S2[j]= "#";
+ }
+
+ let S3 = [];
+ for(k=0;k<N;k++){
+     if(k%2==0){
+          S3 = S3.concat(S1);
+     }else{
+          S3 = S3.concat(S2);
+     }
+ }
+ let S4 = [];
+ for(l=0;l<N;l++){
+     if(l%2==0){
+         S4 = S4.concat(S2);
+     }else{
+         S4 = S4.concat(S1);
+     }
+ }
+
+let S5 = [];
+let count = 0;
+for(m=0;m<B*N;m++){
+    if(count<B){
+        S5.push(S3);
+        count++;
+    }else if(count<B*2){
+        S5.push(S4);
+        count++;
+    }else{
+        S5.push(S3);
+        count = 1;
+    }
+}
+let S7 = [];
+for(p=0;p<A*N;p++){
+   let S6 = []; 
+    for(q=0;q<B*N;q++){
+        S6.push(S5[q][p]);
+    }
+    S7.push(S6);
+}
+for(r=0;r<S7.length;r++){
+   console.log(S7[r].join(""));
+}
+    
+}
+Main(require("fs").readFileSync("/dev/stdin", "utf8"));
