@@ -1,0 +1,42 @@
+const Main = input =>{
+
+	const args = input.split("\n")
+  const a = args[0].split(" ")
+  const n = parseInt(a[0])
+  const m = parseInt(a[1])
+
+  const num = []
+  const nn = args[1].split(" ")
+  for (let i = 0; i < n; i++ ) {
+    num.push(parseInt(nn[i]))
+  }
+
+  let hoge = []
+
+  for (let i = 0; i < n; i++) {
+    let ff = num[i]
+    if (ff <= m){
+        hoge.push(ff)
+      
+      for (let j = i + 1; j < n; j++) {
+        let ff2  = ff + num[j]
+        if (ff2 <= m){
+            hoge.push(ff2)
+          
+        }
+        for (let x = j+1; x < n; x++) {
+          let ff3 = ff2 + num[x]
+          if (ff3 <= m){
+              hoge.push(ff3)
+            
+          }
+        }
+      }
+
+    }
+  }
+
+  const hh = [...new Set(hoge)]
+  console.log(hh.length)
+}
+main(require("fs").readFileSync("/dev/stdin", "utf8"));
