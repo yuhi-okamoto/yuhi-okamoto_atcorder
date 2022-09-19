@@ -1,0 +1,25 @@
+function Main(input) {
+  let array_1 = input.split("\n");
+  let array_2 = array_1[0].split(" ");
+  let N = array_2[0];
+  let W = array_2[1];
+  let A = array_1[1].split(" ");
+  let x = A[0]-1;
+  let y = A[1]-1;
+  let count = 0;
+  if(x-1>=0){
+    count++;
+  }
+  if(Number(x)+1<N){
+    count++;
+  }
+  if(y-1>=0){
+    count++;
+  }
+  if(Number(y)+1<W){
+    count++;
+  }
+  console.log(count);
+    
+}
+Main(require("fs").readFileSync("/dev/stdin", "utf8"));
