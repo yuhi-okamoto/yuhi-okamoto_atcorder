@@ -1,0 +1,32 @@
+const Main = input =>{
+  input = input.trim().split('\n');
+  let n = parseInt(input[0], 10);
+  let s = [], t = [];
+  for (let i = 1; i <= n; i++) {
+    let [t1,t2] = input[i].split(' ');
+    s.push(t1);
+    t.push(parseInt(t2, 10));
+  }
+  
+  let array = new Array(n).fill(0);
+  let st = new Set();
+  for (let i = 0; i < s.length; i++) {
+    if (!st.has(s[i])) {
+      array[i] = 1;
+      st.add(s[i]);
+    }
+  }
+  let score = -1;
+  let ans = -1;
+  for (let i = 0; i < n; i++) {
+    if (array[i] == 0) continue;
+    if (score < t[i]) {
+      score = t[i];
+      ans = i+1;
+    }
+  }
+  console.log(ans);
+  
+  
+}
+main(require("fs").readFileSync("/dev/stdin", "utf8"));
