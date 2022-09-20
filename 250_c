@@ -1,0 +1,25 @@
+function Main(input) {
+  input = input.trim().split('\n')
+  let [n, q] = input[0].split(' ').map(Number)
+  let x = input.slice(1).map(Number)
+  let nums = [0]
+  let pos = [0]
+  for (let i = 1; i <= n; i++) {
+    nums.push(i)
+    pos.push(i)
+  }
+
+  for (let i = 0; i < q; i++) {
+    let p0 = pos[x[i]]
+    let p1 = p0
+    if (p0 != n) p1++
+    else p1--
+    let n0 = nums[p0]
+    let n1 = nums[p1]
+    ;[nums[p0], nums[p1]] = [nums[p1], nums[p0]]
+    ;[pos[n0], pos[n1]] = [pos[n1], pos[n0]]
+  }
+
+  console.log(nums.slice(1).join(' '))
+}
+Main(require("fs").readFileSync("/dev/stdin", "utf8"));
