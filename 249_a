@@ -1,0 +1,32 @@
+function main(input) {
+  const inputList = input.split('\n');
+  var a = Number(inputList[0].split(' ')[0]);
+  var b = Number(inputList[0].split(' ')[1]);
+  var c = Number(inputList[0].split(' ')[2]);
+  var d = Number(inputList[0].split(' ')[3]);
+  var e = Number(inputList[0].split(' ')[4]);
+  var f = Number(inputList[0].split(' ')[5]);
+  var x = Number(inputList[0].split(' ')[6]);
+  var nowa = x;
+  var reta = 0;
+  var nowb = x;
+  var retb = 0;
+  while(nowa > 0) {
+    var diff = Math.min(a, nowa);
+    nowa -= diff;
+    reta += b*diff;
+    if(nowa == 0) break;
+    nowa -= c;
+  }
+  while(nowb > 0) {
+    var diff = Math.min(d, nowb);
+    nowb -= diff;
+    retb += e*diff;
+    if(nowb == 0) break;
+    nowb -= f;
+  }
+  if(reta > retb) console.log('Takahashi');
+  else if(reta < retb) console.log('Aoki');
+  else console.log('Draw');
+}
+main(require('fs').readFileSync('/dev/stdin', 'utf8'));
