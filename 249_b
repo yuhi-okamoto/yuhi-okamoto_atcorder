@@ -1,0 +1,35 @@
+const Main = input =>{
+  const args = input.split("\n");
+  const f = args[0].split(" ")
+  const n = parseInt(f[0], 10);
+  const k = parseInt(f[1], 10);
+  const a = args[1].split(" ").map((n) => parseInt(n, 10));
+  const b = args[2].split(" ").map((n) => parseInt(n, 10));
+
+  let max = 0
+  for (let index = 0; index < a.length; index++) {
+      if (max<a[index]) {
+          max=a[index]
+      }
+
+  }
+
+  let flag = false
+  for (let i = 0; i < b.length; i++) {
+      if (a[b[i]-1]==max) {
+          flag = true;
+          break;
+      } 
+
+  }
+
+  if (flag==true) {
+      console.log("Yes");
+  } else {
+    console.log("No")
+  }
+
+
+}
+
+  main(require("fs").readFileSync("/dev/stdin", "utf8"));
