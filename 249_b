@@ -8,23 +8,23 @@ const Main = input =>{
 
   let max = 0
   for (let index = 0; index < a.length; index++) {
-      if (max<a[index]) {
-          max=a[index]
-      }
+    if (max<a[index]) {
+        max=a[index]
+    }
 
   }
 
   let flag = false
   for (let i = 0; i < b.length; i++) {
-      if (a[b[i]-1]==max) {
-          flag = true;
-          break;
-      } 
+    if (a[b[i]-1]==max) {
+        flag = true;
+        break;
+    } 
 
   }
 
   if (flag==true) {
-      console.log("Yes");
+    console.log("Yes");
   } else {
     console.log("No")
   }
