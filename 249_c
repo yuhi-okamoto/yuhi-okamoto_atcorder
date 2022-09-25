@@ -1,0 +1,29 @@
+function Main(input) {
+  input = input.split("\n");
+  let [n, k] = input[0].split(' ').map(Number);
+  let arr = input.slice(1);
+  let ans = 0;
+
+  for (let i = 0; i < (1 << n); i++) {
+    let cnt = 0;
+    let m = new Map();
+    for (let j = 0; j < n; j++) {
+      if (i & (1 << j)) {
+        for (let k = 0; k < arr[j].length; k++) {
+          if (m.has(arr[j][k])) {
+            m.set(arr[j][k], m.get(arr[j][k]) + 1);
+          } else {
+            m.set(arr[j][k], 1);
+          }
+        }
+      }
+    }
+    for (let v of m.values()) {
+      if (v === k) cnt++;
+    }
+    ans = Math.max(cnt, ans);
+  }
+
+  console.log(ans);
+}
+Main(require("fs").readFileSync("/dev/stdin", "utf8").trim());
