@@ -1,0 +1,33 @@
+const Main = input =>{
+    const MOD = 998244353;
+    const INPUT = input.split(' ');
+    const N = Number(INPUT[0]);
+    const M = Number(INPUT[1]);
+    const K = Number(INPUT[2]);
+
+    const DP = new Array(N + 1);
+    for (let i = 0; i <= N; i++){
+        DP[i] = new Array(K + 1).fill(0);
+    }
+    
+    DP[0][0] = 1;
+    for (let i = 1; i <= N; i++) {
+        for (let j = 0; j <= K; j++) {
+            for (let k = 1; k <= M; k++){
+                if(j + k <= K){
+                    DP[i][j + k] += DP[i - 1][j];
+                    DP[i][j + k] %= MOD;
+                }
+            }
+        }
+    }
+
+    let sum = 0;
+    for (let indexOfDP = 0; indexOfDP <= K; indexOfDP++){
+        sum += DP[N][indexOfDP];
+        sum %= MOD;
+    }
+    console.log(sum);
+}
+
+Main(require("fs").readFileSync("/dev/stdin", "utf8"));
