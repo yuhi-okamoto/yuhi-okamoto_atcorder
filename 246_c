@@ -1,0 +1,40 @@
+const Main = input => {
+  input = input.split("\n");
+  var tmp = input[0].split(" ");
+  var n = tmp[0];
+  var k = tmp[1];
+  var x = tmp[2];
+  var vals = input[1].split(" ");
+  let sum = 0;
+  
+  for (i=0;i<n;i++) {
+    vals[i] = parseInt(vals[i]);
+    sum += vals[i];
+  }
+  
+  let m = 0;
+  for (i=0;i<n;i++) {
+    m += Math.floor(vals[i] / x);
+  }
+  
+  m = Math.min(m, k);
+  sum -= m * x;
+  k -= m;
+  
+  for (i=0;i<n;i++) {
+    vals[i] %= x;
+  }
+
+  vals.sort((a, b) => b - a);
+  for (i=0;i<n;i++) {
+    if (k === 0) {
+      break;
+    }
+    sum -= vals[i];
+    k--;
+  }
+  
+  console.log(sum);
+}
+
+Main(require("fs").readFileSync("/dev/stdin", "utf8"));
