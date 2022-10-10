@@ -1,0 +1,13 @@
+const Main = input => {
+  let [a, b, k] = input.split(' ').map(Number);
+  let now = a;
+  let ans = 0;
+
+  while (now < b) {
+    now *= k;
+    ans++;
+  }
+  console.log(ans);
+};
+
+Main(require("fs").readFileSync("/dev/stdin", "utf8").trim());
