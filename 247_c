@@ -1,0 +1,10 @@
+const Main = input =>{
+    var N = parseInt(input)
+    let arr = "1"
+    for (let i=2;i<=N;i++){
+    	let narr = arr + " " + i.toString() + " " + arr
+        arr = narr
+    }
+    console.log(arr)
+}
+Main(require("fs").readFileSync("/dev/stdin", "utf8"));
