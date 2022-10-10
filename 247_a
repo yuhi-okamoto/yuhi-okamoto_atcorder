@@ -1,0 +1,9 @@
+const main = input => {
+  const array = input.split("").map(Number);
+  let array1 = array.slice(0,3);
+  let array2 = array1.unshift(0);
+  let array3 = array1.join("");
+  console.log(array3);
+}
+
+main(require("fs").readFileSync("/dev/stdin", "utf8"));
