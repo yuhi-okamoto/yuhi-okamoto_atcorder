@@ -1,0 +1,27 @@
+function Main(input) {
+  let array_1 = input.split("\n");
+  let array_2 = [];
+  for(k=0;k<3;k++){
+    array_2.push(array_1[k].split(" "));
+  }
+  
+  let x_array = [];
+  for(i=0;i<array_2.length;i++){
+      x_array.push(array_2[i][0]);
+  }
+  let y_array = [];
+  for(k=0;k<array_2.length;k++){
+    y_array.push(array_2[k][1]);
+  }
+  
+ let answer_x,answer_y;
+ if(x_array[0] === x_array[1]) answer_x = x_array[2];
+ if(x_array[0] === x_array[2]) answer_x = x_array[1];
+ if(x_array[1] === x_array[2]) answer_x = x_array[0];
+ if(y_array[0] === y_array[1]) answer_y = y_array[2];
+ if(y_array[0] === y_array[2]) answer_y = y_array[1];
+ if(y_array[1] === y_array[2]) answer_y = y_array[0];
+ console.log(answer_x);
+ console.log(answer_y);
+}
+Main(require("fs").readFileSync("/dev/stdin", "utf8"));
