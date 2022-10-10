@@ -1,0 +1,55 @@
+const Main = input =>{
+   let array_1 = input.split("\n");
+   let N = array_1[0];
+   let array_name = [];
+   for(i=1;i<=N;i++){
+       array_name.push(array_1[i].split(" "));
+   }
+ 
+  let A = [];
+  for(l=0;l<array_name.length;l++){
+      let ret_A = [];
+      for(m=0;m<2;m++){
+         let name_1 = array_name[l][m];
+         let ret_name = tansaku(name_1,l,m);
+         ret_A.push(ret_name);
+      }
+      A.push(ret_A);
+   }
+   let flag = false;
+   for(p=0;p<A.length;p++){
+       let count_2 = 0;
+       for(q=0;q<2;q++){
+           if(A[p][q]==0){
+               count_2++;
+           }
+       }
+       if(count_2 >= 2){
+           flag = true;
+       }
+   }
+   
+   if(flag == true){
+       console.log("No");
+   }else{
+       console.log("Yes");
+   }
+
+    function tansaku(name,x,y){
+        let count = 0;
+        for(j=0;j<array_name.length;j++){
+            for(k=0;k<=1;k++){
+                if((name == array_name[j][k])&&(x!=j)){
+                    count++;
+                }
+            }
+        }
+        if(count<1){
+            return name;
+        }else{
+            return 0;
+        }
+    }
+  
+}
+Main(require("fs").readFileSync("/dev/stdin", "utf8"));
