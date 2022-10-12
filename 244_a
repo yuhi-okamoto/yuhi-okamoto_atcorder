@@ -1,0 +1,7 @@
+function Main(input) {
+  let array_1 = input.split("\n");
+  let N = array_1[0];
+  let S = array_1[1].split("");
+  console.log(S[N-1]);
+}
+Main(require("fs").readFileSync("/dev/stdin", "utf8"));
