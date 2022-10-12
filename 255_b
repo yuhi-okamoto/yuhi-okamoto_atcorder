@@ -1,0 +1,52 @@
+function main(input) {
+  const args = input.split("\n");
+  const A = args[0];
+  const B = args[1];
+
+  const newB = B.split('')
+
+
+  let X = 0;
+  let Y = 0;
+
+  let E = 1;
+  let S = 2;
+  let W = 3;
+  let N = 4;
+
+  let d = E
+
+
+  for (let index = 0; index < newB.length; index++) {
+    if (newB[index]=="R") {
+      if (d == E) {
+        d = S
+      } else if (d == S) {
+        d = W
+      } else if (d == W) {
+        d = N
+      } else {
+        d = E
+      }
+    }
+
+    if (newB[index]=="S") {
+      if (d == E) {
+        X++
+      } else if (d == S) {
+        Y--
+      } else if (d == W) {
+        X--
+      } else {
+        Y++
+      }      
+    }
+    
+  }
+
+  console.log(X +" "+ Y);
+
+
+}
+
+main(require("fs").readFileSync("/dev/stdin", "utf8"));
