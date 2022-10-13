@@ -1,0 +1,41 @@
+const { stdin, stdout, exit } = process
+stdin.setEncoding('utf-8')
+
+const rl = require('readline').createInterface({
+  input: stdin,
+})
+
+let N = null
+let isFirst = true
+const set = new Set()
+
+rl.on('line', (line) => {
+  const input = parseInt(line)
+
+  if (N === null) {
+    N = input
+    for (let i = N * 2 + 1; i > 0; i--) {
+      set.add(i)
+    }
+  }
+
+  if (input === 0) {
+    exit(0)
+  }
+  if (!isFirst) {
+    set.delete(input)
+  } else {
+    isFirst = false
+  }
+
+  const out = [...set][set.size - 1]
+  if (out > 0) {
+    stdout.write(out + '\n')
+    stdout.uncork()
+    set.delete(out)
+  } else {
+    stdout.write('0\n')
+    stdout.uncork()
+    exit(0)
+  }
+})
